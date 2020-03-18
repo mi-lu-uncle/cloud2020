@@ -1,0 +1,36 @@
+server:
+  port: 3355
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    #Config客户端配置
+    config:
+      label: master #分支名称
+      name: application #配置文件名称
+      profile: dev #读取后缀名称 上述3个综合：application-dev.yml的配置文件被读取 http://localhost.com:3344/master/application-dev.yml
+      uri: http://localhost:3344 #配置中心地址
+  #rabbitmq相关配置 15672是Web管理界面的端口；5672是MQ访问的端口
+  rabbitmq:
+    host: 192.168.0.104
+    port: 5673
+    username: guest
+    password: guest
+
+#服务注册到eureka地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: config-client3355
+    prefer-ip-address: true
+
+#暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

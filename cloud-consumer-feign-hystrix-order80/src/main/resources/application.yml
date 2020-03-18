@@ -1,0 +1,20 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka7001:7001/eureka/
+  instance:
+    instance-id: custom80
+    prefer-ip-address: true
+
+feign:
+  hystrix:
+    enabled: true
+
+spring:
+  application:
+    name: cloud-order-server
